@@ -1,0 +1,5 @@
+# tell pow where rbenv is
+export PATH=/Users/plbabin/.rbenv/shims:/Users/plbabin/.rbenv/bin:$PATH
+export POW_DST_PORT=19999
+export POW_DST_PORT=44444
+export POW_DST_PORT=44444

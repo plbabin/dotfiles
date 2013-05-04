@@ -3,15 +3,18 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
-# Shortcuts
-alias d="cd ~/Documents/Dropbox"
-alias dl="cd ~/Downloads"
+# Paths Shortcuts
+alias dp="cd ~/workspace/duproprio"
+alias d="cd ~/Dropbox"
+alias w="cd ~/workspace"
+alias t="cd ~/workspace/tumbz"
+alias um="cd ~/workspace/universal-mind"
+alias res="cd ~/workspace/side-project/restos"
 alias dt="cd ~/Desktop"
-alias p="cd ~/Projects"
-alias g="git"
+
+# Helper Shortcuts
 alias h="history"
 alias j="jobs"
 alias v="vim"
@@ -19,6 +22,46 @@ alias m="mate ."
 alias s="subl ."
 alias o="open"
 alias oo="open ."
+
+# Ruby
+alias b="bundle"
+alias be="bundle exec "
+alias ber="bundle exec ruby "
+alias brake="bundle exec rake "
+alias brails="bundle exec rails "
+alias rbl="rbenv local"
+alias rbe="rbenv each -v "
+alias irb="nocorrect pry"
+alias ripl="nocorrect pry"
+alias pry="nocorrect pry"
+
+# Git Shortcuts
+alias got='git '
+alias get='git '
+alias g='git '
+alias gs='git status -sb '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias gk='gitk --all&'
+alias gx='gitx --all' 
+# Undo a `git push`
+alias undopush="git push -f origin HEAD^:master"
+
+# Global aliases
+# --------------------------------------
+alias L="| less"
+alias SORT='| sort'
+alias S='| sha256sum'
+alias LC='| wc -l'
+alias A='| ag -i'
+alias AA='| ag'
+alias BG='> /dev/null 2>&1 &'
+alias JSON='| ap_json'
+alias O='| open-after-migration'
+
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -133,3 +176,6 @@ done
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
 alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
+
+# run rubymotion rake with retina settings
+alias raker="rake simulator retina=true"

@@ -1,0 +1,21 @@
+# init rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)" >/dev/null
+
+# Path to your oh-my-zsh configuration.
+export ZSH=$HOME/.oh-my-zsh
+
+#export for homebrew
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
+#export for git
+export PATH=$PATH:/usr/local/git/bin
+
+#export for pow
+export PATH=~/.rbenv/shims:$PATH
+
+# export for node
+export PATH="/usr/local/share/npm/bin:$PATH"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

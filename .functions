@@ -26,34 +26,6 @@ function cdf() { # short for `cdfinder`
 	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
 }
 
-# Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
-function targz() {
-	local tmpFile="${@}.tar"
-	tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1
-
-	size=$(
-		stat -f"%z" "${tmpFile}" 2> /dev/null; # OS X `stat`
-		stat -c"%s" "${tmpFile}" 2> /dev/null # GNU `stat`
-	)
-
-	local cmd=""
-	if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
-		# the .tar file is smaller than 50 MB and Zopfli is available; use it
-		cmd="zopfli"
-	else
-		if hash pigz 2> /dev/null; then
-			cmd="pigz"
-		else
-			cmd="gzip"
-		fi
-	fi
-
-	echo "Compressing .tar using \`${cmd}\`…"
-	"${cmd}" -v "${tmpFile}" || return 1
-	[ -f "${tmpFile}" ] && rm "${tmpFile}"
-	echo "${tmpFile}.gz created successfully."
-}
-
 # Determine size of a file or total size of a directory
 function fs() {
 	if du -b /dev/null > /dev/null 2>&1; then
@@ -83,15 +55,6 @@ function dataurl() {
 		mimeType="${mimeType};charset=utf-8"
 	fi
 	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
-}
-
-# Start an HTTP server from a directory, optionally specifying the port
-function server() {
-	local port="${1:-8000}"
-	sleep 1 && open "http://localhost:${port}/" &
-	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
-	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
-	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
 }
 
 # Start a PHP server from a directory, optionally specifying the port
@@ -238,4 +201,21 @@ function unquarantine() {
 	for attribute in com.apple.metadata:kMDItemDownloadedDate com.apple.metadata:kMDItemWhereFroms com.apple.quarantine; do
 		xattr -r -d "$attribute" "$@"
 	done
+}
+
+# increase speed of git autocompletion
+__git_files () {
+    _wanted files expl 'local files' _files
+}
+
+function rbenv_gemset_info() {
+  gemset=$(rbenv gemset active 2> /dev/null)
+  if [[ $gemset != "" ]]; then
+    rubyversion=$(rbenv version | sed "s/ .*//" 2> /dev/null) || return
+    echo -n "$PR_LIGHT_WHITE ""$PR_NO_COLOR$PR_LIGHT_MAGENTA$rubyversion@$gemset$PR_NO_COLOR$PR_LIGHT_WHITE$PR_NO_COLOR"
+  else
+    echo -n "$PR_LIGHT_MAGENTA"`echo " " && cat .rbenv-version 2> /dev/null`
+    echo -n "$PR_LIGHT_MAGENTA"`echo " " && cat .ruby-version 2> /dev/null`
+  fi
+  echo -n "$PR_NO_COLOR"
 }
