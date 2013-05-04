@@ -8,9 +8,7 @@ I created this repo to keep my dotfiles somewhere. They're only for my personnal
 
 ## private config
 
-Toss it into a file called `.extra` which you do not commit to this repo and just keep in your `~/`
-
-I also created a `install-local.sh` file to setup anything you want and not share it on github.
+Toss it into a file called `.extra` which you do not commit to this repo and just keep in your `~/`. Add this file name to `.git/info/exclude`.
 
 ### Sensible OS X defaults
 

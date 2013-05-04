@@ -19,9 +19,4 @@ else
 fi
 unset doIt
 
-if [ -f install-local.sh ]
-then
-    sh install-local.sh
-fi
-
 source ~/.zshrc
