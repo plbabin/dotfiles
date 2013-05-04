@@ -5,8 +5,8 @@ chsh -s /bin/zsh
 cd "$(dirname "${BASH_SOURCE}")"
 git pull
 function doIt() {
-	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" --exclude "iterm/" --exclude "zsh-themes/" --exclude "install-local.sh" --exclude "README.md" -av . ~
-    rsync -av zsh-themes/. ~/oh-my-zsh/themes/. 
+	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "sync.sh" --exclude "iterm/" --exclude "zsh-themes/" --exclude "install-local.sh" --exclude "README.md" -av . ~
+    rsync -av zsh-themes/. ~/.oh-my-zsh/themes/ 
 }
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
 	doIt
