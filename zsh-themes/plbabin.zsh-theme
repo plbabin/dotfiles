@@ -142,26 +142,12 @@
   zmodload zsh/complist
   autoload -U compinit; compinit # Completion
 
-#===========
-#  HISTORY
-#===========
-
-  # Log 10K commands
-  export HISTSIZE=10000
-  export SAVEHIST=10000
-  export HISTFILE=$HOME/.zsh/history
-
 #===================
 #  VIEWING/EDITING
 #===================
 
   export PAGER='less'
   alias more='less'
-
-  export EDITOR='vim'
-  export MUTT_EDITOR='vim'
-  export GIT_EDITOR='vim'
-  export VISUAL='vim'
 
 #==========
 #  PROMPT
@@ -214,71 +200,14 @@
   # Arrow Keys
   bindkey "$terminfo[kcuu1]" up-line-or-history
   bindkey "$terminfo[kcud1]" down-line-or-history
-  bindkey '^[f' forward-word
-  bindkey '^[b' backward-word
+  bindkey '[C' forward-word
+  bindkey '[D' backward-word
 
   # Misc
   ## bindkey ' ' magic-space # Do history expansion on space
   bindkey '^r' history-incremental-search-backward
   bindkey "^[[3~" delete-char
   bindkey "^?" backward-delete-char
-
-#==========
-#  PYTHON
-#==========
-
-  if [ -f ~/.pythonrc ]; then
-    export PYTHONSTARTUP=~/.pythonrc
-  fi
-
-  # virtualenv
-  if which virtualenvwrapper.sh >/dev/null 2>&1; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    ## The following removed for speed reasons:
-    # . "`which virtualenvwrapper.sh`"
-    # workon default
-    if [[ -d $WORKON_HOME/default/ ]]; then
-      . $WORKON_HOME/default/bin/activate
-    fi
-  fi
-
-  function cd.py () {
-    cd "$(python -c "import os.path as _, ${1}; \
-      print _.dirname(_.realpath(${1}.__file__[:-1]))")"
-  }
-
-  # pip
-  if which pip >/dev/null 2>&1; then
-    if [ ! -f ~/.zsh/cache/pip_completion ]; then
-      pip completion --zsh | egrep -v '^\s*(#|$)' > ~/.zsh/cache/pip_completion 2>/dev/null
-    fi
-
-    . ~/.zsh/cache/pip_completion
-
-    export PIP_RESPECT_VIRTUALENV=true
-  fi
-
-  #-------------
-  #  Functions
-  #-------------
-
-    python_lib () {
-      # python_lib
-      # Print the full path to the current Python site-packages directory.
-      echo `python -c 'import distutils; print distutils.sysconfig_get_python_lib()'`
-    }
-
-    pylink () {
-      # pylink <package/module>
-      # Symlink a Python package/module into the site-packages directory.
-      ln -s $(abspath `pwd`/"$1") `python_lib`/`basename "$1"`
-    }
-
-    pyunlink () {
-      # pyunlink <package/module>
-      # Remove the link to a Python package/module from the site-packages directory.
-      unlink `python_lib`/`basename "$1"`
-    }
 
 #========
 #  RUBY
