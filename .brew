@@ -46,5 +46,47 @@ brew install redis
 brew tap homebrew/versions
 # brew install lua52
 
+# all plbabin's installed packages
+brew install ack
+brew install imagemagick
+brew install libxml2
+brew install nginx
+brew install php53-memcached
+brew install sqlite
+brew install autoconf
+brew install jpeg
+brew install libxslt
+brew install node
+brew install pkg-config
+brew install subversion
+brew install cmake
+brew install libevent
+brew install mcrypt
+brew install openssl
+brew install rbenv
+brew install tig
+brew install curl
+brew install libiconv
+brew install memcached
+brew install pcre
+brew install readline
+brew install wget
+brew install freetype
+brew install libmemcached
+brew install mongodb
+brew install php53
+brew install redis
+brew install zlib
+brew install gettext
+brew install libpng
+brew install mysql
+brew install php53-mcrypt
+brew install ruby-build
+brew install git
+brew install libtool
+brew install neon
+brew install php53-memcache
+brew install serf
+
 # Remove outdated versions from the cellar
 brew cleanup
