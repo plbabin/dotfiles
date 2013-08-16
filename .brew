@@ -26,7 +26,8 @@ brew install narwhal
 brew tap homebrew/dupes
 brew install homebrew/dupes/grep
 brew tap josegonzalez/homebrew-php
-brew install php54
+#brew install php53 --with-mysql --with-fpm
+brew install php54 --with-mysql --with-fpm
 
 # Install everything else
 brew install ack

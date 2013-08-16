@@ -19,3 +19,6 @@ export PATH="/usr/local/share/npm/bin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+## PHP
+export PATH="$(brew --prefix josegonzalez/php/php53)/bin:$PATH"
