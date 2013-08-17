@@ -22,3 +22,12 @@ export HISTFILE=~/.zsh_history
 
 # Uncomment following line if you want to disable colors in ls
 # export DISABLE_LS_COLORS="true"
+
+########################################################################################
+# php-version (activate default PHP version and autocompletion)
+# PHP_HOME                      => should reflect location of compiled PHP versions
+# PHPVERSION_DISABLE_COMPLETE=1 => to disable shell completion
+########################################################################################
+export PHP_VERSIONS=$(dirname $(brew --prefix php53))
+[ -f $(brew --prefix php-version)/php-version.sh ] &&
+  source $(brew --prefix php-version)/php-version.sh && php-version 5.3.13 >/dev/null
