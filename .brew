@@ -66,7 +66,7 @@ brew install mcrypt
 brew install openssl
 brew install rbenv
 brew install tig
-brew install curl
+brew install curl --with-ssh --with-ssl
 brew install libiconv
 brew install memcached
 brew install pcre
@@ -88,6 +88,8 @@ brew install libtool
 brew install neon
 brew install php53-memcache
 brew install serf
+brew install ios-webkit-debug-proxy
+brew install git-ftp
 
 # Remove outdated versions from the cellar
 brew cleanup
