@@ -6,7 +6,7 @@
     editor = subl --wait
 
 [alias]
-  a       = add
+  a       = add --all
   co      = checkout
   ci      = commit
   cl      = clone
