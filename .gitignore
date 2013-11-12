@@ -1,5 +1,4 @@
 # bundler state
-/.bundle
 /vendor/bundle/
 
 # git files
