@@ -28,6 +28,7 @@ brew install homebrew/dupes/grep
 brew tap josegonzalez/homebrew-php
 #brew install php53 --with-mysql --with-fpm
 brew install php54 --with-mysql --with-fpm
+brew tap phinze/homebrew-cask
 
 # Install everything else
 brew install ack
@@ -48,6 +49,7 @@ brew tap homebrew/versions
 # brew install lua52
 
 # all plbabin's installed packages
+brew install cask
 brew install ack
 brew install imagemagick
 brew install libxml2
@@ -92,6 +94,11 @@ brew install ios-webkit-debug-proxy
 brew install git-ftp
 brew install ssh-copy-id
 brew install curl-ca-bundle
+
+# brew cask
+brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package && qlmanage -r
+
+
 
 # Remove outdated versions from the cellar
 brew cleanup
