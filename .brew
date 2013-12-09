@@ -70,7 +70,7 @@ brew install curl --with-ssh --with-ssl
 brew install libiconv
 brew install memcached
 brew install pcre
-brew install readline
+brew install readline && CONFIGURE_OPTS="--with-readline-dir=$(brew --prefix readline)"
 brew install wget
 brew install freetype
 brew install libmemcached
@@ -90,6 +90,8 @@ brew install php53-memcache
 brew install serf
 brew install ios-webkit-debug-proxy
 brew install git-ftp
+brew install ssh-copy-id
+brew install curl-ca-bundle
 
 # Remove outdated versions from the cellar
 brew cleanup
