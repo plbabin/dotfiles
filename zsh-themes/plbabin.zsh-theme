@@ -186,6 +186,7 @@
 %{$fg[magenta]%}>>%{$reset_color%} '
 
   if which git >/dev/null 2>&1; then
+    # RPROMPT='$(git_prompt.rb)'
     RPROMPT='$(_git_prompt)'
   fi
 
@@ -198,8 +199,10 @@
   bindkey '^e' end-of-line
 
   # Arrow Keys
-  bindkey "$terminfo[kcuu1]" up-line-or-history
-  bindkey "$terminfo[kcud1]" down-line-or-history
+  # bindkey "$terminfo[kcuu1]" up-line-or-history
+  # bindkey "$terminfo[kcud1]" down-line-or-history
+  bindkey "$terminfo[kcuu1]" history-substring-search-up
+  bindkey "$terminfo[kcud1]" history-substring-search-down
   bindkey '[C' forward-word
   bindkey '[D' backward-word
 

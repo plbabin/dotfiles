@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+# install npm packages
+npm install -g imageoptim-cli

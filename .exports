@@ -26,6 +26,9 @@ export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 # Uncomment following line if you want to disable colors in ls
 # export DISABLE_LS_COLORS="true"
 
+# cairo
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/X11/lib/pkgconfig
+
 ########################################################################################
 # php-version (activate default PHP version and autocompletion)
 # PHP_HOME                      => should reflect location of compiled PHP versions

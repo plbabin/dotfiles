@@ -45,7 +45,6 @@ alias ga='git add '
 alias gb='git branch '
 alias gc='git commit'
 alias gd='git diff'
-alias go='git checkout '
 alias gk='gitk --all&'
 alias gx='gitx --all' 
 # Undo a `git push`
@@ -104,6 +103,9 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+
 # Enhanced WHOIS lookups
 alias whois="whois -h whois-servers.net"
 
+# better dig output
+alias dig="dig +nostats +nocomments +nocmd"
+
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
 
@@ -122,9 +124,6 @@ command -v md5sum > /dev/null || alias md5sum="md5"
 
 # OS X has no `sha1sum`, so use `shasum` as a fallback
 command -v sha1sum > /dev/null || alias sha1sum="shasum"
-
-# Trim new lines and copy to clipboard
-alias c="tr -d '\n' | pbcopy"
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
@@ -178,5 +177,17 @@ alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
 alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
+# foreman
+alias fos="foreman start"
+
 # run rubymotion rake with retina settings
 alias raker="rake simulator retina=true"
+
+# Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# clear quickly
+alias c="clear"
+
+# better ping, only one packet
+alias ping="ping -o"

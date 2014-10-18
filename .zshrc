@@ -24,9 +24,21 @@ unset file
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git ruby zsh-syntax-highlighting bundler)
-plugins=(git zsh-syntax-highlighting brew gem rails)
+# remove safe-paste
+plugins=(git zsh-syntax-highlighting brew gem rails bundler history-substring-search grunt)
 
 source $ZSH/oh-my-zsh.sh
+
+# jump to any project in workspace from anywhere
+# this alias need to be run after oh-my-zsh setup
+go() { cd ~/workspace/$1; }
+_go() { _files -W ~/workspace -/; }
+compinit
+compdef _go go
+
+# make beginning and end of line still works with safe-paste
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
 
 # Include stuff that should only be on this
 if [[ -r ~/.zshrc_local ]]; then

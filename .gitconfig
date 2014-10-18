@@ -1,42 +1,63 @@
+[include]
+   path = ~/.gitconfig_aliases
+
 [apply]
     whitespace = nowarn
 [core]
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
     editor = subl --wait
-
+    pager = most
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    autocrlf = input
+    
 [alias]
-  a       = add --all
-  co      = checkout
-  ci      = commit
-  cl      = clone
-  st      = status -sb
-  br      = branch
-  m       = merge --no-ff
-  so      = show --pretty=format: --name-only
-  s       = stash
-  sp      = stash pop
-  type    = cat-file -t
-  dump    = cat-file -p
-  amend   = commit --amend
+  # One-letter aliases
+  a = add --all
+  b = branch
+  d = diff
+  e = !git diff | $EDITOR
+  l = log --pretty=oneline -n 20 --graph
+  m = merge --no-ff
+  p = pull
+  u = reset HEAD --
+  
+  # Simple fairly-frequent aliases.
+  au    = add --update .
+  ac    = !git add -p; git commit
+  co    = checkout
+  ci    = commit
+  cl    = clone
+  ca    = commit --amend
+  cp    = cherry-pick # cherry-pick - apply the changes introduced by some existing commits; useful for moving small chunks of code between branches.
+  cp-nx = cherry-pick --no-commit -x # cherry-pick without making a commit, and when when recording the commit, append a line that says "(cherry picked from commit ...)"
+  st    = status -sb
+  br    = branch
+  brm   = branch --merged
+  brnm  = branch --no-merged
+  so    = show --pretty=format: --name-only
+  sp    = stash pop
+  spf   = !git stash show -p $1 | git apply && git stash drop
+  type  = cat-file -t
+  dump  = cat-file -p
+  amend = commit --amend
+  w     = whatchanged
 
-  r       = reset
-  r1      = reset HEAD^
-  r2      = reset HEAD^^
-  rh      = reset --hard
-  rh1     = reset HEAD^ --hard
-  rh2     = reset HEAD^^ --hard
+  r   = reset
+  r1  = reset HEAD^
+  r2  = reset HEAD^^
+  rh  = reset --hard
+  rh1 = reset HEAD^ --hard
+  rh2 = reset HEAD^^ --hard
 
   hist    = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
   ls      = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
   ll      = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
   lds     = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
-  l 	    = log --pretty=oneline -n 20 --graph
   count   = shortlog -sn
   credit  = commit --amend --author "$1 <$2>" -C HEAD 
 
   unstage = reset HEAD --
-  u       = reset HEAD --
   undo    = reset --soft HEAD^
 
   pso     = push origin
@@ -46,37 +67,54 @@
 
   la      = "!git config -l | grep alias | cut -c 7-"
   lt      = describe --tags --abbrev=0
+  
+  workprofile = config user.email \"pierre-luc.babin@universalmind.com\"
 
 [mergetool]
     keepBackup = false
 [merge]
+    conflictstyle = diff3
     tool = diffmerge
 [mergetool "diffmerge"]
     cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
     trustExitCode = true
-[color]
-	ui = true
-[color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
-[color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
-[color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+
+[pull]
+  rebase = true
 [push]
-	default = matching
+  default = matching
+
 [help]
 	autocorrect = 1
+
 # Use `origin` as the default remote on the `master` branch in all cases
 [branch "master"]
 	remote = origin
 	merge = refs/heads/master
 
-[pull]
-  rebase = true
+[branch]
+  autosetupmerge = true
+
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  pager = true
+  status = auto
+  ui = true
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan

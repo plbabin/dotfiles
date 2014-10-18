@@ -54,3 +54,5 @@ Icon
 # Color scheme #
 ######################
 *.cs
+
+*.sublime-*

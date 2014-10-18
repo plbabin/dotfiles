@@ -55,6 +55,10 @@ Everything in the folder `zsh-themes` will be sync in `~./oh-my-zsh/themes`
 
 To update later on, just run the sync again.
 
+### Redis
+
+change loglevel to warning in the redis config file (redis-server /usr/local/etc/redis.conf) 
+
 # TODOS
 
 * Remove dependancies of oh-my-zsh
