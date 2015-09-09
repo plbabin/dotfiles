@@ -61,6 +61,7 @@ alias AA='| ag'
 alias BG='> /dev/null 2>&1 &'
 alias JSON='| ap_json'
 alias O='| open-after-migration'
+alias rm='trash'
 
 
 # Detect which `ls` flavor is in use
@@ -191,3 +192,7 @@ alias c="clear"
 
 # better ping, only one packet
 alias ping="ping -o"
+
+# file vault
+alias vltco="vlt --credentials admin:admin co --force -f ../META-INF/vault/filter.xml http://localhost:4502"
+alias vltci="vlt --credentials admin:admin ci --force -f ../META-INF/vault/filter.xml http://localhost:4502"
