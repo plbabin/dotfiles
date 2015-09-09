@@ -25,7 +25,7 @@ unset file
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git ruby zsh-syntax-highlighting bundler)
 # remove safe-paste
-plugins=(git zsh-syntax-highlighting brew gem rails bundler history-substring-search grunt)
+plugins=(git zsh-syntax-highlighting brew gem rails bundler history-substring-search git-flow-completion)
 
 source $ZSH/oh-my-zsh.sh
 
