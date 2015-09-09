@@ -182,7 +182,7 @@
   }
 
   PROMPT='
-%{$fg[yellow]%}%m%{$reset_color%} in %{$fg[green]%}%~$(_virtualenv_prompt)
+%{$fg[yellow]%}$(scutil --get ComputerName)%{$reset_color%} in %{$fg[green]%}%~$(_virtualenv_prompt)
 %{$fg[magenta]%}>>%{$reset_color%} '
 
   if which git >/dev/null 2>&1; then
