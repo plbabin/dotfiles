@@ -61,8 +61,9 @@ alias AA='| ag'
 alias BG='> /dev/null 2>&1 &'
 alias JSON='| ap_json'
 alias O='| open-after-migration'
-alias rm='trash'
-
+alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
+alias del="trash"
+alias reload!=". ~/.zshrc"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

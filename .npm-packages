@@ -3,3 +3,5 @@
 
 # install npm packages
 npm install -g imageoptim-cli
+npm install -g babel-eslint
+npm install -g eslint

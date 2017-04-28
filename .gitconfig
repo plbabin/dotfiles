@@ -50,12 +50,15 @@
   rh1 = reset HEAD^ --hard
   rh2 = reset HEAD^^ --hard
 
-  hist    = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+  hist    = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
   ls      = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
   ll      = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
   lds     = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+  me      = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --author=plbabin
   count   = shortlog -sn
   credit  = commit --amend --author "$1 <$2>" -C HEAD 
+
+  stash-all = stash save --include-untracked
 
   unstage = reset HEAD --
   undo    = reset --soft HEAD^
@@ -69,6 +72,7 @@
   lt      = describe --tags --abbrev=0
   
   workprofile = config user.email \"pierre-luc.babin@universalmind.com\"
+  recap = log --since=\"00:00:00\" --no-merges --oneline --author=plbabin@gmail.com
 
 [mergetool]
     keepBackup = false
@@ -118,3 +122,8 @@
   added = yellow
   changed = green
   untracked = cyan
+
+[status]
+  showUntrackedFiles = all
+  # Sometimes a newly-added folder, since it's only one line in git status, can slip under the radar.
+  # https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles

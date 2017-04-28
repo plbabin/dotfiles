@@ -44,3 +44,6 @@ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/X11/lib/pkgconfig
 
  # brew cask
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+# android
+export ANDROID_HOME=/usr/local/opt/android-sdk

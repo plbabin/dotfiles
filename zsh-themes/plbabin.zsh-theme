@@ -152,10 +152,59 @@
 #==========
 #  PROMPT
 #==========
+  _ruby_version() {
+    if {echo $fpath | grep -q "plugins/rvm"}; then
+      echo "%{$fg[grey]%}$(rvm_prompt_info)%{$reset_color%}"
+    elif {echo $fpath | grep -q "plugins/rbenv"}; then
+      echo "%{$fg[grey]%}$(rbenv_prompt_info)%{$reset_color%}"
+    fi
+  }
+
+  _user_host() {
+    if [[ -n $SSH_CONNECTION ]]; then
+      me="%n@%m"
+    elif [[ $LOGNAME != $USER ]]; then
+      me="%n"
+    else
+      me="$(whoami)"
+    fi
+    if [[ -n $me ]]; then
+      echo "%{$fg[yellow]%}$me%{$reset_color%}: "
+    fi
+  }
 
   _virtualenv_prompt () {
     if [[ -n $VIRTUAL_ENV ]]; then
       echo "$reset_color workon$fg[cyan]" `basename "$VIRTUAL_ENV"`
+    fi
+  }
+
+  _node_version() {
+    if [ -n "$NVM_BIN" ]; then
+      local node_version="$(nvm version)"
+      local nvmrc_path="$(nvm_find_nvmrc)"
+      
+      if [ -n "$nvmrc_path" ]; then
+        if [ "$node_version" != "$(nvm version default)" ]; then
+          NVM_NODE_VERSION=$($nvmrc_node_version)
+          if [ "$nvmrc_node_version" = "N/A" ]; then
+            local v=$(NVM_NODE_VERSION)
+          else
+            local v=$(node -v)
+          fi
+        fi
+      fi
+    fi
+    [ "$v" != "" ] && echo "[%{$fg[cyan]%}node:${v:1}%{$reset_color%}] "
+  }
+
+  local _current_dir="%{$fg_bold[green]%}%3~%{$reset_color%} "
+  _current_dir() {
+    local _max_pwd_length="65"
+    if [[ $(echo -n $PWD | wc -c) -gt ${_max_pwd_length} ]]; then
+      echo "%{$fg_bold[green]%}%-2~ ... %3~%{$reset_color%} "
+    else
+      echo "%{$fg_bold[green]%}%~%{$reset_color%} "
     fi
   }
 
@@ -182,12 +231,12 @@
   }
 
   PROMPT='
-%{$fg[yellow]%}$(scutil --get ComputerName)%{$reset_color%} in %{$fg[green]%}%~$(_virtualenv_prompt)
-%{$fg[magenta]%}>>%{$reset_color%} '
+$(_user_host)${_current_dir}$(_virtualenv_prompt)
+%{$fg[magenta]%}❯❯%{$reset_color%} '
 
   if which git >/dev/null 2>&1; then
     # RPROMPT='$(git_prompt.rb)'
-    RPROMPT='$(_git_prompt)'
+    RPROMPT='$(_ruby_version) $(_node_version)$(_git_prompt)'
   fi
 
 #================

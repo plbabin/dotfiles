@@ -6,7 +6,7 @@ cd "$(dirname "${BASH_SOURCE}")"
 git pull
 function doIt() {
   rsync -av zsh-themes/. ~/.oh-my-zsh/themes/
-	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "sync.sh" --exclude "iterm/" --exclude "osx-for-hackers.sh" --exclude "zsh-themes/" --exclude "install-local.sh" --exclude "README.md" --exclude "dotfiles.sublime-workspace" --exclude "dotfiles.sublime-project" -av --no-perms . ~
+	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "sync.sh" --exclude "Brewfile" --exclude "Caskfile" --exclude "homebrew.sh" --exclude "npm-debug.log" --exclude "iterm/" --exclude "osx-for-hackers.sh" --exclude "zsh-themes/" --exclude "install-local.sh" --exclude "README.md" --exclude "dotfiles.sublime-workspace" --exclude "dotfiles.sublime-project" -av --no-perms . ~
   source ~/.zshrc
 }
 if [ "$1" == "--force" -o "$1" == "-f" ]; then

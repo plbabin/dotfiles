@@ -123,3 +123,5 @@ brew 'homebrew/php/php56-memcache'
 brew 'homebrew/php/php56-memcached'
 brew 'homebrew/science/vips', args: ['with-webp', 'with-graphicsmagick']
 brew 'homebrew/versions/bison27'
+
+brew 'cask qlmarkdown'
