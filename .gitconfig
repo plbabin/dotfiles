@@ -6,7 +6,7 @@
 [core]
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
-    editor = subl --wait
+    editor = code --wait
     pager = most
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
     autocrlf = input
@@ -54,7 +54,8 @@
   ls      = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
   ll      = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
   lds     = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
-  me      = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --author=plbabin
+  me      = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --author=plbabin --date=relative
+  paul      = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --author=paul.smith.iv@ninthavenuemedia.com --date=relative
   count   = shortlog -sn
   credit  = commit --amend --author "$1 <$2>" -C HEAD 
 
@@ -72,7 +73,7 @@
   lt      = describe --tags --abbrev=0
   
   workprofile = config user.email \"pierre-luc.babin@universalmind.com\"
-  recap = log --since=\"00:00:00\" --no-merges --oneline --author=plbabin@gmail.com
+  recap = log --since=\"24 hours ago\" --no-merges --oneline --author=plbabin@gmail.com
 
 [mergetool]
     keepBackup = false

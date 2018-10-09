@@ -2,8 +2,8 @@
 
 brew update
 
-brew tap 'adobe-marketing-cloud/brews'
-brew tap 'atlassian/tap'
+#brew tap 'adobe-marketing-cloud/brews'
+#brew tap 'atlassian/tap'
 brew tap 'caskroom/cask'
 brew tap 'caskroom/fonts'
 brew tap 'caskroom/versions'
@@ -98,6 +98,7 @@ brew install 'narwhal'
 brew install 'neon'
 brew install 'nginx'
 brew install 'node'
+brew install 'yarn'
 brew install 'orc'
 brew install 'ossp-uuid'
 brew install 'pidof'
@@ -117,16 +118,16 @@ brew install 'tree'
 brew install 'unixodbc'
 brew install 'unrar'
 brew install 'wget'
-brew install 'adobe-marketing-cloud/brews/filevault'
-brew install 'atlassian/tap/atlassian-plugin-sdk'
+#brew install 'adobe-marketing-cloud/brews/filevault'
+#brew install 'atlassian/tap/atlassian-plugin-sdk'
 brew install 'homebrew/dupes/grep'
 brew install 'homebrew/dupes/libiconv'
 brew install 'homebrew/dupes/zlib'
-brew install 'homebrew/php/php56', args: ['with-fpm']
-brew install 'homebrew/php/php56-memcache'
-brew install 'homebrew/php/php56-memcached'
-brew install 'homebrew/science/vips', args: ['with-webp', 'with-graphicsmagick']
-brew install 'homebrew/versions/bison27'
+#brew install 'homebrew/php/php56', args: ['with-fpm']
+#brew install 'homebrew/php/php56-memcache'
+#brew install 'homebrew/php/php56-memcached'
+#brew install 'homebrew/science/vips', args: ['with-webp', 'with-graphicsmagick']
+#brew install 'homebrew/versions/bison27'
 	
 #echo "to update setuptools & pip run: pip --upgrade setuptools pip --upgrade pip"
 #	echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."

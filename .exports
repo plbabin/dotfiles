@@ -3,8 +3,8 @@
 export ZSH_THEME="plbabin"
 
 # Editor
-export EDITOR='subl --wait'
-export GIT_EDITOR='subl --wait'
+export EDITOR='code --wait'
+export GIT_EDITOR='code --wait'
 
 # Donít clear the screen after quitting a manual page
 export MANPAGER="less -X"
@@ -27,7 +27,8 @@ export HISTFILE=~/.zsh_history
 # export DISABLE_LS_COLORS="true"
 
 # java
-export JAVA_HOME="`/usr/libexec/java_home -v '1.8*'`"
+#export JAVA_HOME="`/usr/libexec/java_home -v '1.8*'`"
+export JAVA_HOME="$(/usr/libexec/java_home)"
 
 # cairo
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/X11/lib/pkgconfig
@@ -47,3 +48,6 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # android
 export ANDROID_HOME=/usr/local/opt/android-sdk
+
+# default node version
+export PATH="/usr/local/opt/node@8/bin:$PATH"

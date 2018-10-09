@@ -9,6 +9,7 @@ alias -- -="cd -"
 alias dp="cd ~/workspace/duproprio"
 alias d="cd ~/Dropbox"
 alias w="cd ~/workspace"
+alias hs="cd ~/workspace/HelpScout"
 alias t="cd ~/workspace/tumbz"
 alias um="cd ~/workspace/universal-mind"
 alias res="cd ~/workspace/side-project/restos"
@@ -197,3 +198,12 @@ alias ping="ping -o"
 # file vault
 alias vltco="vlt --credentials admin:admin co --force -f ../META-INF/vault/filter.xml http://localhost:4502"
 alias vltci="vlt --credentials admin:admin ci --force -f ../META-INF/vault/filter.xml http://localhost:4502"
+
+# server
+alias webserver="python -m SimpleHTTPServer 8000"
+
+# real brew update
+alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor; brew cask cleanup'
+
+# npx alias
+alias npm-exec="npx"

@@ -1,10 +1,11 @@
+# zmodload zsh/zprof
 # Add `~/bin` and other bin folder to the `$PATH`
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH="$HOME/bin:$PATH"
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
+# * ~/.extra can be used for other settings you donï¿½t want to commit.
 for file in ~/.{path,node,php,exports,aliases,functions,extra}; do
     [ -r "$file" ] && source "$file"
 done
@@ -26,7 +27,15 @@ export DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git ruby zsh-syntax-highlighting bundler)
 # remove safe-paste
 # gem rails bundler git-flow-completion
-plugins=(git zsh-syntax-highlighting brew history-substring-search )
+plugins=(
+    git 
+    zsh-syntax-highlighting 
+    brew 
+    history-substring-search 
+    zsh-autosuggestions
+    env
+    docker-machine
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -45,3 +54,5 @@ bindkey '^[[F' end-of-line
 if [[ -r ~/.zshrc_local ]]; then
     source ~/.zshrc_local
 fi
+
+# zprof

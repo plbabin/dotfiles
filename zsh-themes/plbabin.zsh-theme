@@ -231,7 +231,7 @@
   }
 
   PROMPT='
-$(_user_host)${_current_dir}$(_virtualenv_prompt)
+$(_user_host)$(_current_dir)$(_virtualenv_prompt)
 %{$fg[magenta]%}❯❯%{$reset_color%} '
 
   if which git >/dev/null 2>&1; then
