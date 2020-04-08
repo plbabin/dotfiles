@@ -28,14 +28,18 @@ export DISABLE_AUTO_UPDATE="true"
 # remove safe-paste
 # gem rails bundler git-flow-completion
 plugins=(
-    git 
-    zsh-syntax-highlighting 
     brew 
-    history-substring-search 
-    zsh-autosuggestions
-    env
     docker-machine
+    env
+    git 
+    history-substring-search 
+    last-working-dir
+    npm
+    npx
+    rand-quote
+    zsh-syntax-highlighting 
 )
+# zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
 

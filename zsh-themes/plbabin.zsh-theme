@@ -150,6 +150,30 @@
   alias more='less'
 
 #==========
+#  HELPERS
+#==========
+n_echo() {
+  command printf %s\\n "$*" 2>/dev/null
+}
+
+n_find_up() {
+  local path_
+  path_="${PWD}"
+  while [ "${path_}" != "" ] && [ ! -f "${path_}/${1-}" ]; do
+    path_=${path_%/*}
+  done
+  n_echo "${path_}"
+}
+
+n_find_nvmrc() {
+  local dir
+  dir="$(n_find_up '.nvmrc')"
+  if [ -e "${dir}/.nvmrc" ]; then
+    n_echo "${dir}/.nvmrc"
+  fi
+}
+
+#==========
 #  PROMPT
 #==========
   _ruby_version() {
@@ -180,22 +204,16 @@
   }
 
   _node_version() {
-    if [ -n "$NVM_BIN" ]; then
-      local node_version="$(nvm version)"
-      local nvmrc_path="$(nvm_find_nvmrc)"
-      
-      if [ -n "$nvmrc_path" ]; then
-        if [ "$node_version" != "$(nvm version default)" ]; then
-          NVM_NODE_VERSION=$($nvmrc_node_version)
-          if [ "$nvmrc_node_version" = "N/A" ]; then
-            local v=$(NVM_NODE_VERSION)
-          else
-            local v=$(node -v)
-          fi
-        fi
+    local node_version="$(node --version)"
+    local nvmrc_path="$(n_find_nvmrc)"
+    
+    if [ -n "$nvmrc_path" ]; then
+      local nvm_version="$(cat "${nvmrc_path}")"
+      if [ "$node_version" != "$nvm_version" ]; then
+        local v=$nvm_version
       fi
     fi
-    [ "$v" != "" ] && echo "[%{$fg[cyan]%}node:${v:1}%{$reset_color%}] "
+    [ "$v" != "" ] && echo "[%{$fg[cyan]%}⚠️  node:${v:1}%{$reset_color%}] "
   }
 
   local _current_dir="%{$fg_bold[green]%}%3~%{$reset_color%} "

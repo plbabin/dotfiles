@@ -6,14 +6,18 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 
 # Paths Shortcuts
-alias dp="cd ~/workspace/duproprio"
 alias d="cd ~/Dropbox"
 alias w="cd ~/workspace"
-alias hs="cd ~/workspace/HelpScout"
+alias dp="cd ~/workspace/duproprio"
 alias t="cd ~/workspace/tumbz"
 alias um="cd ~/workspace/universal-mind"
-alias res="cd ~/workspace/side-project/restos"
+alias dot="cd ~/workspace/me/dotfiles"
 alias dt="cd ~/Desktop"
+
+# Paths HelpScout Shortcuts
+alias hs="cd ~/workspace/HelpScout"
+alias hsds="cd ~/workspace/HelpScout/hsds-react"
+alias hsapp="cd ~/workspace/HelpScout/hs-app"
 
 # Helper Shortcuts
 alias h="history"
@@ -100,7 +104,7 @@ alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en1"
+alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 
 # Enhanced WHOIS lookups
@@ -207,3 +211,12 @@ alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor; 
 
 # npx alias
 alias npm-exec="npx"
+
+# npm
+alias nrt="npm run test"
+alias ns="npm start"
+alias nrs="npm run storybook"
+
+# n
+alias ni='n $(cat .nvmrc)'
+alias nu='n use $(cat .nvmrc)'
